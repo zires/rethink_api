@@ -17,7 +17,7 @@ module RethinkAPI
       #
       #   end
       def rethink_api(opts = {})
-        class_name = opts[:class_name] || opts['class_name'] || "#{name}RethinkAPI"
+        class_name = opts[:class_name] || opts['class_name'] || "#{name.demodulize}RethinkAPI"
         class_variable_set(:@@_r_api_const, const_set( class_name, Class.new(RethinkAPI::Base) ))
         class_variable_set(:@@_r_templates, {})
         rethink_api_const.bootstrap
